@@ -32,28 +32,25 @@ export default {
   methods: {
     //请求用户的一些信息
     getUserInfo(){
-
-      //发送http请求获取，这里写死作演示
-      this.userInfo = {
-        nick: 'Doterlin',
-        ulevel: 20,
-        uid: '10000',
-        portrait: 'images/profile.png'
-      }
-
       //实例开发中这里会向服务端请求数据
+      let sessionId = this.getCookie('session');
       //如下(用了vue-resource):
-      /*ts.$http.get(url, {
-        //参数
-        "params":{}
-      }).then((response) => {
+      this.$http.get('http://localhost:8099/getUserInfo', {
+        sessionId: sessionId
+      },{emulateJSON:false}).then((response) => {
         //Success
+        this.userInfo = {
+          nick: response.data.nickName,
+          ulevel: response.data.userLevel,
+          uid: response.data.uid,
+          portrait: response.data.portrait
+        }
       }, (response) => {
         //Error
-      });*/
+      });
 
-      //提交mutation到Store
-      this.$store.commit('updateUserInfo', this.userInfo); 
+      //提交 mutation 到Store
+      this.$store.commit('updateUserInfo', this.userInfo);
     }
   }
 }

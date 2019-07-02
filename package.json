@@ -12,6 +12,8 @@
   "dependencies": {
     "vows": "^0.8.1",
     "vue": "^2.0.1",
+    "vue-resource": "^1.5.1",
+    "vue2js": "^1.0.1",
     "vuex": "^2.1.2"
   },
   "devDependencies": {

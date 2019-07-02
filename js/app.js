@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from '../component/App.vue'
 import Login from '../component/Login.vue'
 import UserInfo from '../component/UserInfo.vue'
@@ -8,6 +9,7 @@ import UserInfo from '../component/UserInfo.vue'
 Vue.use(Vuex)
   //路由
 Vue.use(VueRouter)
+Vue.use(VueResource)
 
 //路由配置
 //如果需要加菜单，就在这里添加路由，并在UserMenu.vue添加入口router-link
@@ -24,7 +26,8 @@ const router = new VueRouter({
 //Vuex配置
 const store = new Vuex.Store({
   state: {
-    domain:'http://test.example.com', //保存后台请求的地址，修改时方便（比方说从测试服改成正式服域名）
+    //保存后台请求的地址，修改时方便（比方说从测试服改成正式服域名）
+    domain:'http://test.example.com',
     userInfo: { //保存用户信息
       nick: null,
       ulevel: null,
@@ -76,6 +79,7 @@ var app = new Vue({
   router,
   store,
   watch:{
+    //？？ todo: $route ??
     "$route" : 'checkLogin'
   },
   created() {
