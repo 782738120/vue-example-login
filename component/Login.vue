@@ -60,7 +60,7 @@
                 //设置在登录状态
                 //请求后端,比如:
                 this.$http.post('http://localhost:8099/loginVerify2',
-                     loginParam,{emulateJSON:false}).then((response) => {
+                    loginParam, {emulateJSON: false}).then((response) => {
                     if (response.data.code == 1) {
                         let expireDays = 1000 * 60 * 60 * 24 * 15;
                         this.setCookie('session', response.data.session, expireDays);
